@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title th:text = "${title}"></title>
+        <link rel="stylesheet" th:href="@{/css/all.css}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    </head>
+<body>
+    <div class="left-side-menu" th:fragment = "leftMenu">
+        <a th:href="@{/admin/index}" class="admin-logo">
+            <span>
+                <img th:src="@{/image/logo.png}" alt="logo" height="16">
+            </span>
+        </a>
+        <ul class="side-nav">
+            <li class="side-nav-title">Trang chủ</li>
+            <li class="side-nav-item">
+                <a th:href="@{/admin/index} " class="side-nav-link activated">
+                    <i class="fa-solid fa-house-chimney"></i>
+                    <span>DashBoards</span>
+                </a>
+            </li>
+            <li class="side-nav-title">Admin</li>
+            <li class="side-nav-item">
+                <a th:href="@{/admin/category}" class="side-nav-link">
+                    <i class="fa-solid fa-box-archive"></i>
+                    <span>Category</span>
+                </a>
+            </li>
+            <li class="side-nav-item">
+                <a class="side-nav-link" onclick="myFunction2()">
+                    <i class="fa-solid fa-shirt"></i>
+                    <span>Product</span>
+                    <span class="menu-arrow"><i class="fa-solid fa-caret-down"></i></span>
+                </a>
+                <div class="side-nav-second-item">
+                    <ul>
+                        <li><a th:href="@{/admin/product/0}">Product</a></li>
+                        <li><a th:href="@{/admin/product/add-product}">Create New Product</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="side-nav-title">Client</li>
+            <li class="side-nav-item">
+                <a href="" class="side-nav-link">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Customer</span>
+                </a>
+            </li>
+            <li class="side-nav-item">
+                <a href="" class="side-nav-link">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Order</span>
+                </a>
+            </li>
+            <li class="side-nav-item">
+                <a href="" class="side-nav-link">
+                    <i class="fa-brands fa-blogger"></i>
+                    <span>Blog</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content-page">
+        <div class="narbar" th:fragment = "narbar">
+            <div class="top-search">
+                <button>
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <form action="" class="search-input">
+                    <div>
+                        <input type="text" placeholder="Search...">
+                        <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <button type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+            <div class="user-info">
+                <a onclick="myFunction()">
+                    <span class="user-avatar"><img th:src="@{/image/2.jpg}" alt=""></span>
+                    <span>
+                        <span class="user-name" th:text = "${session.user.name}"></span>
+                        <span class="user-username" th:text ="${session.user.username}"></span>
+                    </span>
+                </a>
+                <div class="user-dropdown">
+                    <div class="user-dropdown-title"><h4>Welcome!</h4></div>
+                    <a href=""><i class="fa-solid fa-user"></i> My Account</a>
+                    <a href=""><i class="fa-solid fa-gear"></i> Setting</a>
+                    <a href=""><i class="fa-solid fa-earth-americas"></i>Support</a>
+                    <a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

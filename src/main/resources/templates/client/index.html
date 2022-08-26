@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:include = "client/fragments::head">
+    <title>Sea Furniture</title>
+  </head>
+  <body>
+    <div th:replace = "client/fragments::header"></div>
+    <div th:replace = "client/fragments::slider"></div>
+
+
+    <div class="product">
+      <div class="container">
+        <div class="side-product" th:each = "topPriceProduct : ${topPriceProducts}">
+          <div class="product-image">
+            <img th:src = "*{'data:image/jpeg;base64,' + {topPriceProduct.image}}" alt="" />
+            <div class="product-icon">
+              <form th:action="@{/shop/add-to-cart/{pid}(pid = ${topPriceProduct.id})}" method="POST">
+                <a th:href="@{/shop/product/{id}(id = ${topPriceProduct.id})}"><i class="fas fa-eye"></i></a>
+                <button type="submit"><i class="fas fa-dolly"></i></button>
+              </form>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">
+              <a th:href="@{/shop/product/{id}(id = ${topPriceProduct.id})}" class="btn-hover" th:text = "${topPriceProduct.name}"></a>
+            </h3>
+            <div class="product-brand"><a href="" th:text = ${topPriceProduct.category.name}></a></div>
+            <div class="product-price" th:text = "${topPriceProduct.costPrice}"></div>
+          </div>
+        </div>
+        <div class="main-product">
+          <div class="title flex space">
+            <h3><a href="">Nổi bật nhất</a></h3>
+            <div class="tab-link">
+              <ul class="flex">
+                <li><a href="" class="btn-hover">Sofa</a></li>
+                <li><a href="" class="btn-hover">Ghế</a></li>
+                <li><a href="" class="btn-hover">Trang trí</a></li>
+                <li><a href="" class="btn-hover">Kệ sách</a></li>
+                <li><a href="" class="btn-hover">Bàn</a></li>
+                <li><a href="" class="btn-hover">Xem tất cả</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="products-view-grid" >
+            <div class="product-view" th:each = "product : ${products}">
+              <div class="product-image">
+                <img th:src = "*{'data:image/jpeg;base64,' + {product.image}}" alt="" />
+                <div class="product-icon">
+                  <form th:action="@{/shop/add-to-cart/{pid}(pid = ${product.id})}" method="POST">
+                    <a th:href="@{/shop/product/{id}(id = ${product.id})}"><i class="fas fa-eye"></i></a>
+                    <button type="submit"><i class="fas fa-dolly"></i></button>
+                  </form>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">
+                  <a th:href="@{/shop/product/{id}(id = ${product.id})}" class="btn-hover" th:text = "${product.name}"></a>
+                </h3>
+                <div class="product-price" th:text = "${product.costPrice}"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="center-img">
+      <div class="container flex">
+        <div class="center-content">
+          <a href=""></a><img th:src="@{/image/image-center1.webp}" alt=""></a>
+          <div class  ="center-info">
+            <h3><a href="" class = "btn-hover">Phòng bếp</a></h3>
+          </div>
+        </div>
+        <div class="center-content">
+          <a href=""><img th:src="@{image/image-center2.webp}" alt=""></a>
+          <div class  ="center-info">
+            <h3><a href="" class = "btn-hover">Phòng khách</a></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="product">
+      <div class="container">
+        <div class="main-product">
+          <div class="title flex space">
+            <h3><a href="">Nổi bật nhất</a></h3>
+            <div class="tab-link">
+              <ul class="flex">
+                <li><a href="" class="btn-hover">Sofa</a></li>
+                <li><a href="" class="btn-hover">Ghế</a></li>
+                <li><a href="" class="btn-hover">Trang trí</a></li>
+                <li><a href="" class="btn-hover">Kệ sách</a></li>
+                <li><a href="" class="btn-hover">Bàn</a></li>
+                <li><a href="" class="btn-hover">Xem tất cả</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="products-view-grid" >
+            <div class="product-view" th:each = "product : ${products}">
+              <div class="product-image">
+                <img th:src = "*{'data:image/jpeg;base64,' + {product.image}}" alt="" />
+                <div class="product-icon">
+                  <form th:action="@{/shop/add-to-cart/{pid}(pid = ${product.id})}" method="POST">
+                    <a th:href="@{/shop/product/{id}(id = ${product.id})}"><i class="fas fa-eye"></i></a>
+                    <button type="submit"><i class="fas fa-dolly"></i></button>
+                  </form>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">
+                  <a th:href="@{/shop/product/{id}(id = ${product.id})}" class="btn-hover" th:text = "${product.name}"></a>
+                </h3>
+                <div class="product-price" th:text = "${product.costPrice}"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="side-product" th:each = "topPriceProduct : ${topPriceProducts}">
+          <div class="product-image">
+            <img th:src = "*{'data:image/jpeg;base64,' + {topPriceProduct.image}}" alt="" />
+            <div class="product-icon">
+              <form th:action="@{/shop/add-to-cart/{pid}(pid = ${topPriceProduct.id})}" method="POST">
+                <a th:href="@{/shop/product/{id}(id = ${topPriceProduct.id})}"><i class="fas fa-eye"></i></a>
+                <button type="submit"><i class="fas fa-dolly"></i></button>
+              </form>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">
+              <a th:href="@{/shop/product/{id}(id = ${topPriceProduct.id})}" class="btn-hover" th:text = "${topPriceProduct.name}"></a>
+            </h3>
+            <div class="product-brand"><a href="" th:text = ${topPriceProduct.category.name}></a></div>
+            <div class="product-price" th:text = "${topPriceProduct.costPrice}"></div>
+          </div>
+        </div>                  
+      </div>
+    </div>
+
+    <div class="center-img">
+      <div class="container">
+          <div class="center-content">
+            <a href=""><img th:src="@{/image/bottom-img.webp}" alt=""></a>
+          </div>
+      </div>
+    </div>
+
+    <div class="slider-products">
+      <div class="container">
+        <div class="title">
+          <h3><a href="">Sản phẩm mới về</a></h3>
+        </div>
+        <div class="owl-2 owl-carousel">
+          <div class="product-view" th:each = "fillterHighPrice : ${fillterHighPrices}">
+            <div class="product-image">
+              <img th:src="*{'data:image/jpeg;base64,' + {fillterHighPrice.image}}" alt="" />
+              <div class="product-icon">
+                <form th:action="@{/shop/add-to-cart/{pid}(pid = ${fillterHighPrice.id})}" method="POST">
+                  <a th:href="@{/shop/product/{id}(id = ${fillterHighPrice.id})}"><i class="fas fa-eye"></i></a>
+                  <button type="submit"><i class="fas fa-dolly"></i></button>
+                </form>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">
+                <a href="" class="btn-hover" th:text = "${fillterHighPrice.name}"></a>
+              </h3>
+              <div class="product-price" th:text = "${fillterHighPrice.costPrice} + ' $' "></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="blog">
+      <div class="container">
+        <div class="title">
+          <h3><a href="">Mẹo vặt hay</a></h3>
+        </div>
+        <div class="owl-3 owl-carousel">
+          <div class="blog-item">
+            <div class="blog-img">
+              <a href=""><img src="image/blog1.webp" alt="">
+              </a>
+              <div class="date-blog">
+                <i class="far fa-calendar-check"></i>
+                <b>10/06/2021</b>
+                <p>Đăng bởi: <b>Dương Phương</b></p>
+              </div>
+            </div>
+            <div class="blog-content">
+              <a href="" class="btn-hover"><b>Mẹo bảo quản & vệ sinh đồ nội thất</b></a>
+              <p>Đối với nội thất bằng kim loại- Khi xử lý các vết bẩn thông thường, bạn chỉ cần xị...</p>
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+
+    <div th:replace = "client/fragments::policy"></div>
+    <div th:replace = "client/fragments::footer"></div>
+
+
+
+    <script th:replace = "client/fragments::body/script"></script>
+  </body>
+</html>

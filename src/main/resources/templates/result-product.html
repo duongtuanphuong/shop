@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form th:action = "@{/search-result/0}" method="GET">
+            <label for="search">Search</label>
+            <input type="text" name = "keyword">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <div th:if = "${success}">
+        <p th:text = "${success}"></p>
+    </div>
+    <div th:if = "${failed}">
+        <p th:text = "${failed}"></p>
+    </div>
+
+    <div>
+        <div th:if = "${size == 0}">
+            <p>No category</p>
+        </div>
+
+        <table th:if = "${size > 0}">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Image</th>
+                    <th>Update</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each = "product : ${products}">
+                    <th th:text = "${product.name}"></th>
+                    <th th:text = "${product.category.name}"></th>
+                    <th th:text = "${product.costPrice}"></th>
+                    <th th:text = "${product.currentQuantity}"></th>
+                    <th> <img th:src="*{'data:image/jpeg;base64,' + {product.image}}" alt="" style="height:40px; width : 40px"></th>
+                    <th><a th:href="@{/update-product/{id} (id = ${product.id})}" >Update</a></th>
+                    <th>
+                        <a th:if ="${product.activated == false}" th:href="@{/enabled-product/{id} (id = ${product.id})}">Enable</a>
+                        <a th:if = "${product.activated == true}" th:href="@{/deleted-product/{id} (id = ${product.id})}">Delete</a>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+        <nav>
+            <ul>
+              <li th:if = "${currentPage != 0}"><a th:href="@{'/search-result/' + ${currentPage - 1}} + '?keyword='+ ${keyword}">Previous</a></li>
+              <li th:each ="i : ${#numbers.sequence(1,totalPages)}" th:classappend = "${currentPage == i -1 ? 'active' : ''}"><a th:href="@{'/search-result/' + ${i-1} + '?keyword=' + ${keyword}}" th:text = "${i}"></a></li>
+              <li th:if = "${currentPage + 1 != totalPages}"><a th:href="@{'/search-result/' + ${currentPage + 1} + '?keyword=' + ${keyword} }">Next</a></li>
+            </ul>
+          </nav>
+    </div>
+</body>
+</html>

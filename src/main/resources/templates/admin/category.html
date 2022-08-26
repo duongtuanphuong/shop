@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace  = "admin/fragments::myHead">
+    <th:block id = "css-resources">
+        <link rel="stylesheet" th:href="@{/css/category.css}">
+    </th:block>
+</head>
+<body>
+    <div class="wrapper">
+        <div th:replace = "admin/fragments::leftMenu"></div>
+        <div class="content-page">
+            <div th:replace = "admin/fragments::narbar"></div>
+
+            <div class="container">
+                <div class="page-title">
+                    <h4 th:text = "${title}"></h4>
+                </div>
+                <div class="content">
+                    <div class="content-action">
+                        <a onclick="addNewFunction()"><i class="fa-solid fa-circle-plus"></i> Add New Category</a>
+                    </div>
+                    <div>
+                        <div th:if = "${success}" class="arlet arlet-success">
+                            <strong th:text = "${success}"></strong>
+                        </div>
+                        <div th:if = "${failed}" class="arlet arlet-failed">
+                            <strong th:text = "${failed}"></stro>
+                        </div>
+                    </div>
+                    <div th:if = "${size == 0}">
+                        <p>No Category</p>
+                    </div>
+                    <table th:if = "${size > 0 }" class="">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Update</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each = "category : ${categories}">
+                                <td th:text = ${category.id}></td>
+                                <td th:text = ${category.name}></td>
+                                <td>
+                                    <a th:href = "@{/admin/category/getById/(id = ${category.id})}" onclick="updateFunction()"  class="updateBtn">Update</a>
+                                </td>
+                                <td>
+                                    <a th:if = "${category.is_activated == true}" th:href="@{/admin/category/delete-category/(id = ${category.id})}" id="deleteBtn">Enabled</a>
+                                    <a th:if = "${category.is_activated == false}" th:href="@{/admin/category/enable-category/(id = ${category.id})}" id="enableBtn">Deleted</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <div class="add-new-category">
+            <form th:action="@{/admin/category/add-category}" method="POST" th:object = "${categoryNew}" class="tg" >
+                <h4>New Category</h4>
+                <div class="modal-body">
+                    <label for="">Name: </label>
+                    <input type="text" placeholder="Category Name" th:field = "*{name}">
+                </div>
+                <div class="modal-footer"> 
+                    <button type="button" onclick="addNewFunction()">Close</button>
+                    <button type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="update-category">
+            <form th:action = "@{/admin/category/update-category}" method="PUT">
+                <h4>Update Category</h4>
+                <div class="modal-body">
+                    <label for="">Id</label>
+                    <input type="text" id="cid" name = "id" readonly>
+                    <label for="">Name: </label>
+                    <input type="text" placeholder="Category Name" id="cname" name="name">
+                </div>
+                <div class="modal-footer"> 
+                    <button type="button" onclick="updateFunction()">Close</button>
+                    <button type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        function addNewFunction(){
+            document.querySelector(".add-new-category").classList.toggle('show');
+        }
+        function updateFunction(){
+            document.querySelector(".update-category").classList.toggle('show');
+        }
+        
+        $('document').ready(function(){
+            $('.updateBtn').on('click',function(event){
+                event.preventDefault();
+                var href = $(this).attr('href');
+                $.get(href,function(category, status){  
+                    $('#cid').val(category.id);
+                    $('#cname').val(category.name);
+                });
+            })
+        })
+        
+    </script>
+    
+</body>
+</html>

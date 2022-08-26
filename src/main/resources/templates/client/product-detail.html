@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace = "client/fragments::head">
+</head>
+<body>
+    <div th:replace = "client/fragments::header"></div>
+    <div th:replace = "client/fragments::slider"></div>
+
+    <div class="product-details">
+        <div class="container">
+            <div class="product-detail-image">
+                <img th:src="*{'data:image/jpeg;base64,' + {product.image}}" alt="">
+            </div>
+            <div class="product-detail">
+                <h2 th:text = "*{product.name}"></h2>
+                <h5 th:text ="*{product.category.name}"></h5>
+                <div class="price-box">
+                    <span th:text = "*{product.costPrice} + '$'"> </span>
+                </div>
+                <p>Thông tin sản phẩm vẫn đang được cập nhật</p>
+                <form action="" class="cart-form">
+                    <div class="product-input-number">
+                        <span>Số lượng </span>
+                        <input type="number" value="1" >
+                    </div>
+                    <button>
+                        <span>Thêm vào giỏ hàng</span>
+                    </button>
+                </form>
+                <div class="call-phone-buy">
+                    <span>Gọi đặt mua : <a href="#">09685512661</a> (Miễn phí, 8-21h cả T7,CN) </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-detail-info">
+        <div class="container">
+            <div class="product-detail-line">
+            </div>
+            <div class="product-info-content">
+                <p><strong>Màu sắc:</strong></p>
+                <p>Chân: Trắng, đen</p>
+                <p><strong>Kích thước:</strong></p>
+                <p>HHHHH</p>
+                <p><strong>Khối lượng thực tế:</strong></p>
+                <p>12.5kg</p>
+                <p><strong>Chất liệu:</strong></p>
+                <p>Gỗ chống ẩm</p>
+                <p><strong>Ý tưởng thiết kế:</strong></p>
+                <p>Một chiếc bàn đơn giản, không chiếm quá nhiều diện tích không gian luôn là sự lựa chọn của mọi người ngày nay. Dù thiết kế tối giản nhưng lại làm cho không gian thêm phần tinh tế</p>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="related-product slider-products">
+        <div class="container">
+            <div class="title">
+                <h3><a href="">Sản phẩm liên quan</a></h3>
+            </div>
+            <div class="owl-2 owl-carousel">
+                <div class="product-view" th:each = "relatedProduct : ${relatedProducts}">
+                    <div class="product-image">
+                        <img th:src="*{'data:image/jpeg;base64,' + {relatedProduct.image}}" alt="" />
+                        <div class="product-icon">
+                            <form th:action="@{/shop/add-to-cart/{pid}(pid = ${relatedProduct.id})}" method="POST">
+                              <a th:href="@{/shop/product/{id}(id = ${relatedProduct.id})}"><i class="fas fa-eye"></i></a>
+                              <button type="submit"><i class="fas fa-dolly"></i></button>
+                            </form>
+                          </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">
+                            <a href="" class="btn-hover" th:text = "${relatedProduct.name}"></a>
+                        </h3>
+                        <div class="product-price" th:text = "${relatedProduct.costPrice} + '$' "></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace = "client/fragments::policy"></div>
+    <div th:replace = "client/fragments::footer"></div>
+
+    <script th:replace = "client/fragments::body/script"></script>
+</body>
+</html>

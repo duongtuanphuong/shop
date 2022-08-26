@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head th:replace = "admin/fragments::myHead"> 
+
+    </head>
+<body>
+
+    <div class="wrapper">
+        <div th:replace = "admin/fragments::leftMenu"></div>
+        <div class="content-page">
+            <div th:replace = "admin/fragments::narbar"></div>
+            <div class="container">
+                <div class="page-title">
+                    <h4 th:text = "${title}"></h4>
+                </div>
+                <div class="content">
+                    <form th:action = "@{/update-product/{id}(id = ${productDto.id})}" method="POST" enctype="multipart/form-data" th:object = "${productDto}" class="update-product">
+
+                        <label for="">Product Name</label>
+                        <input type="text" placeholder="Product Name" th:field = "*{name}" >
+                
+                        <label for="">Product Category</label>
+                        <div >
+                            <select th:field ="*{category}">
+                                <option th:value = "null">-SELECT-</option>
+                                <option th:each = "category : ${categories}" th:value = "${category.id}" th:text = "${category.name}"></option>
+                            </select>
+                        </div>
+
+                        <label for="">Available Quantity</label>
+                        <input type="text" placeholder="Quantity" th:field = "*{currentQuantity}">
+                
+                        <label for="">Price</label>
+                        <input type="text" placeholder="Price" th:field = "*{costPrice}">
+
+                        <label for="">Sale Price</label>
+                        <input type="text" placeholder="Price" th:field = "*{salePrice}">
+
+                        <label for="">Product Description</label>
+                        <textarea name="description" id="" cols="30" rows="10" th:field = "*{description}" placeholder="Product Description"></textarea>
+                
+                        <label for="">Image Product</label>
+                        <input type="file" name="imageProduct">
+                        <img style="height: 40px; width: 40px" th:src="*{'data:image/jpeg;base64,' + {image}}" alt="">
+
+                        <button type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

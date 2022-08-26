@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form th:action="@{/shop/update-user}" method="PUT" th:object = "${user}">
+        <input type="text" th:field = "*{name}">
+        <input type="text" th:field = "*{username}" readonly>
+        <input type="text" th:field = "*{address}">
+        <input type="text" th:field = "*{phoneNumber}">
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

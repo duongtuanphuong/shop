@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="image/bed.svg" />
+  <title>Sea Furniture</title>
+  <link rel="stylesheet" th:href="@{/css/main.css}">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+  />
+  <link rel="stylesheet" th:href="@{/css/owl.carousel.css}">
+  <!-- <link rel="stylesheet" href="@{/css/owl.carousel.min.css}"> -->
+</head>
+<body>
+    <div class="header" th:fragment = "header">
+        <div class="container">
+          <div class="header-main flex space">
+            <!-- Header image -->
+            <div class="header-image">
+              <a href="">
+                <img th:src="@{/image/logo.webp}" alt="Sea Furniture" />
+              </a>
+            </div>
+  
+            <!-- Search -->
+            <div class="search-input flex">
+              <form action="">
+                <input
+                  type="search"
+                  placeholder="Nhập từ khóa tìm kiếm"
+                  class="input-group"
+                />
+                <a href="" class="input-group-btn">
+                  <i class="fas fa-search"></i>
+                </a>
+              </form>
+            </div>
+  
+            <!-- Register -->
+            <div class="header-right flex center">
+              <div class="register">
+                <ul class="flex">
+                  <li><a href="" class="btn-hover">Đăng kí</a></li>
+                  <li>|</li>
+                  <li><a href="" class="btn-hover">Đăng nhập</a></li>
+                </ul>
+              </div>
+  
+              <!-- cart -->
+  
+              <div class="cart">
+                <a href="" class="cart-icon">
+                  <i class="fas fa-dolly"></i>
+                  <span class="count-item">0</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="header-category flex">
+            <h4 class="category " onclick="hiddenFunction()">
+              <span><i class="fas fa-bars"></i></span>
+              <span> Danh mục sản phẩm</span>
+              <div class="menu-category category-hidden">
+                <ul>
+                  <li><a href=""> <i class="fas fa-chevron-right"></i> Sofa</a></li>
+                  <li><a href=""> <i class="fas fa-chevron-right"></i> Ghế</a></li>
+                  <li><a href=""> <i class="fas fa-chevron-right"></i> Trang trí</a></li>
+                  <li><a href=""> <i class="fas fa-chevron-right"></i> Kệ sách</a></li>
+                  <li><a href=""> <i class="fas fa-chevron-right"></i> Bàn</a></li>
+                  <li><a href=""> <i class="fas fa-chevron-right"></i> Tủ quần áo</a></li>
+                </ul>
+              </div>  
+            </h4>
+  
+            <div class="header-menu">
+              <ul class="flex center">
+                <li>
+                  <a href="" class="btn-hover" style="color: #f7941d"
+                    >Trang chủ</a
+                  >
+                </li>
+                <li><a href="" class="btn-hover">Giới thiệu</a></li>
+                <li>
+                  <a href="" class="btn-hover"
+                    >Sản phẩm <i class="fas fa-sort-down"></i
+                  ></a>
+                </li>
+                <li><a href="" class="btn-hover">Tin tức</a></li>
+                <li><a href="" class="btn-hover">Liên hệ</a></li>
+              </ul>
+              <div class="hotline">
+                <span><i class="fas fa-headphones"></i> Hotline: </span>
+                <a href=""> 0968512619</a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="slider" th:fragment = "slider">
+        <div class="owl-1 owl-carousel">
+          <img th:src="@{/image/slider_1.webp}" alt="" />
+        </div>
+        <div class="slider-category">
+          <div class="container">
+            <a href="" class="slider-item">
+              <div class="item-img">
+                <img th:src="@{/image/slider-c1.webp}" alt="" />
+              </div>
+              <h3>Sofa</h3>
+            </a>
+            <a href="" class="slider-item">
+              <div class="item-img">
+                <img th:src="@{/image/slider-c2.webp}" alt="" />
+              </div>
+              <h3>Ghế</h3>
+            </a>
+            <a href="" class="slider-item">
+              <div class="item-img">
+                <img th:src="@{/image/slider-c3.webp}" alt="" />
+              </div>
+              <h3>Trang trí</h3>
+            </a>
+            <a href="" class="slider-item">
+              <div class="item-img">
+                <img th:src="@{/image/slider-c4.webp}" alt="" />
+              </div>
+              <h3>Kệ sách</h3>
+            </a>
+            <a href="" class="slider-item">
+              <div class="item-img">
+                <img th:src="@{/image/slider-c5.webp}" alt="" />
+              </div>
+              <h3>Bàn</h3>
+            </a>
+            <a href="" class="slider-item">
+              <div class="item-img">
+                <img th:src="@{/image/slider-c6.webp}" alt="" />
+              </div>
+              <h3>Tủ quần áo</h3>
+            </a>
+          </div>
+        </div>
+    </div>
+
+    <div class="policy" th:fragment = "policy">
+        <div class="container">
+          <div class="policy-content">
+            <div class="policy-item">
+              <div class="policy-img">
+                <img th:src="@{/image/policy1.webp}" alt="">
+              </div>
+              <div class="policy-category">
+                <span>Giao hàng miễn phí</span>
+                <p>Với đơn hàng 300.000 đ</p>
+              </div>
+            </div>
+            <div class="policy-item">
+              <div class="policy-img">
+                <img th:src="@{/image/policy2.webp}" alt="">
+              </div>
+              <div class="policy-category">
+                <span>Hỗ trợ 24/7</span>
+                <p>Nhanh chóng thuận tiện</p>
+              </div>
+            </div>
+            <div class="policy-item">
+              <div class="policy-img">
+                <img th:src="@{/image/policy3.webp}" alt="">
+              </div>
+              <div class="policy-category">
+                <span>Đổi trả 3 ngày</span>
+                <p>Hấp dẫn chưa từng có</p>
+              </div>
+            </div>
+            <div class="policy-item">
+              <div class="policy-img">
+                <img th:src="@{/image/policy4.webp}" alt="">
+              </div>
+              <div class="policy-category">
+                <span>Giá tiêu chuẩn</span>
+                <p>Tiết kiệm 10% giá cả</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  
+    <div class="footer" th:fragment = "footer">
+        <div class="container">
+            <div class="footer-img">
+              <a href=""><img th:src="@{/image/logo.webp}" alt=""></a>
+              <div class="address">
+                <p>Siêu thị nội thất Sea Furniture</p>
+                <p>Hà Nội, 108 ngoại giao đoàn</p>
+                <p>Hotline: <a href="" class="btn-hover">0968512619</a></p>
+                <p>Email: <a href="" class="btn-hover">Duongtuanphuong2@gmail.com</a></p>
+              </div>
+            </div>
+            <div class="footer-menu">
+              <h4>Về chúng tôi</h4>
+              <ul>
+                <li><a href="" class= "btn-hover">Trang chủ</a></li>
+                <li><a href="" class= "btn-hover">Giới thiệu</a></li>
+                <li><a href="" class= "btn-hover">Sản phẩm</a></li>
+                <li><a href="" class= "btn-hover">Tin tức</a></li>
+                <li><a href="" class= "btn-hover">Liên hệ</a></li>
+              </ul>
+            </div>
+            <div class="footer-menu">
+              <h4>Tin khuyến mãi</h4>
+              <ul>
+                <li><a href="" class= "btn-hover">Trang chủ</a></li>
+                <li><a href="" class= "btn-hover">Giới thiệu</a></li>
+                <li><a href="" class= "btn-hover">Sản phẩm</a></li>
+                <li><a href="" class= "btn-hover">Tin tức</a></li>
+                <li><a href="" class= "btn-hover">Liên hệ</a></li>
+              </ul>
+            </div>
+            <div class="footer-social">
+              <h4>Tổng đài hỗ trợ</h4>
+              <div class="footer-time">
+                <div class="time-logo">
+                  <img th:src="@{/image/24-hours.svg}" alt="">
+                </div>
+                <span><a href="" class="btn-hover">0968512619</a></span>
+              </div>
+              <h3>Nhận tin khuyến mãi</h3>
+              <div class="footer-button">
+                <input type="email" placeholder="Nhập email"> 
+                <button>Đăng ký</button>
+              </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script th:src="@{/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

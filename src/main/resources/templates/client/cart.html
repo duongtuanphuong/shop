@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace = "client/fragments::head">
+
+</head>
+<body>
+
+    <div th:replace = "client/fragments::header"></div>
+    <div th:replace = "client/fragments::slider"></div>
+
+
+    
+    <div th:replace = "client/fragments::policy"></div>
+    <div th:replace = "client/fragments::footer"></div>
+
+    <script th:replace = "client/fragments::body/script"></script>
+
+    <div >
+        <div th:each = "shoppingCart : ${shoppingCarts}">
+            <form th:action="@{/shop/update-item/{id}(id = ${shoppingCart.product.id})}" method="POST">
+                <img th:src="*{'data:image/jpeg;base64,'+{shoppingCart.product.image}}" alt="">
+                <div th:text = "${shoppingCart.product.name}"></div>
+                <input type="number" th:value = "${shoppingCart.quantity}" name="qty">
+                <div th:text = "${shoppingCart.totalPrices}"></div>
+                <button type="submit">update</button>
+            </form>
+            <form th:action = "@{/shop/delete-item/{id}(id = ${shoppingCart.product.id})}" method="POST"> 
+                <button type="submit">Xoa</button>
+            </form>
+
+        </div>
+    </div>
+
+
+    <a th:href = "@{/shop/checkout}">checkout</a>
+
+
+    
+    
+</body>
+</html>

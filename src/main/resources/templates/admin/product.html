@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace = "admin/fragments::myHead"> 
+
+</head>
+<body>
+    <div class="wrapper">
+        <div th:replace = "admin/fragments::leftMenu"></div>
+        <div class="content-page">
+            <div th:replace = "admin/fragments::narbar"></div>
+            <div class="container">
+                <div class="page-title">
+                    <h4 th:text = "${title}"></h4>
+                </div>
+                <div class="content">
+                    <div class="content-action">
+                        <a th:href = "@{/admin/product/add-product}"><i class="fa-solid fa-circle-plus"></i> Add New Product</a>
+                    </div>
+                    <div>
+                        <div th:if = "${success}" class="arlet arlet-success">
+                            <strong th:text = "${success}"></strong>
+                        </div>
+                        <div th:if = "${failed}" class="arlet arlet-failed">
+                            <strong th:text = "${failed}"></stro>
+                        </div>
+                    </div>
+                    <div th:if = "${size == 0}">
+                        <p>No Product</p>
+                    </div>
+                    <table th:if = "${size > 0 }" class="">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Category</th>
+                                <th>Quantity</th>
+                                <th>Cost Price</th>
+                                <th>Sale Price</th>
+                                <th>Update</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each = "product : ${products}">
+                                <td th:text = ${product.id}></td>
+                                <td th:text = ${product.name}></td>
+                                <td>
+                                    <img th:src="*{'data:image/jpeg;base64,' + {product.image}}" alt="" style="height:40px; width : 40px">
+                                </td>
+                                <td th:text = ${product.category.name}></td>
+                                <td th:text =${product.currentQuantity}></td>
+                                <td th:text = ${product.costPrice}></td>
+                                <td th:text = ${product.salePrice}></td>
+                                <td>
+                                    <a th:href = "@{/admin/product/update-product/{id}(id = ${product.id})}" onclick="updateFunction()"  class="updateBtn">Update</a>
+                                </td>
+                                <td>
+                                    <a th:if = "${product.activated == true}" th:href = "@{/admin/product/deleted-product/{id}(id = ${product.id})}" id="deleteBtn">Enabled</a>
+                                    <a th:if = "${product.activated == false}" th:href = "@{/admin/product/enabled-product/{id}(id = ${product.id})}" id="enableBtn">Deleted</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <nav>
+                        <ul>
+                          <li th:if = "${currentPage != 0}"><a th:href="@{'/admin/product/' + ${currentPage - 1}}" class="page-arrow"> < </a></li>
+                          <li th:each ="i : ${#numbers.sequence(1,totalPages)}" th:classappend = "${currentPage == i -1 ? 'active' : ''}"><a th:href="@{'/admin/product/' + ${i-1}}" th:text = "${i}"></a></li>
+                          <li th:if = "${currentPage + 1 != totalPages}"><a th:href="@{'/admin/product/' + ${currentPage + 1} }" class="page-arrow"> > </a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

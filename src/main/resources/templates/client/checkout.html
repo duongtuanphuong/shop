@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form th:object = "${user}">
+        <input type="text" th:field = "*{name}">
+        <input type="text" th:field = "*{username}" readonly>
+        <input type="text" th:field = "*{address}">
+        <input type="text" th:field = "*{phoneNumber}">
+    </form>
+    <div th:each = "shoppingCart : ${shoppingCarts}">
+        <div th:text = "${shoppingCart.product.name}"></div>
+        <div th:text = "${shoppingCart.quantity}" name = "qty"></div>
+    </div>
+
+
+    <form th:action="@{/shop/save-order}" method="POST">
+        <button type="submit">save</button>
+    </form>
+</body>
+</html>

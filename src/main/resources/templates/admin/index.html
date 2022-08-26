@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "admin/fragments::head">
+</head>
+<body>
+    <div class="wrapper">
+        <div th:replace = "admin/fragments::leftMenu"></div>
+        <div class="content-page">
+            <div th:replace = "admin/fragments::narbar"></div>
+        </div>
+    </div>
+
+    <script>
+        function myFunction(){
+            document.querySelector(".user-dropdown").classList.toggle("show");
+        }
+        function myFunction2(){
+            document.querySelector(".side-nav-second-item").classList.toggle("show");
+        }
+    </script>
+</body>
+</html>
